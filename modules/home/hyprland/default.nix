@@ -61,7 +61,6 @@
   # these were ambient system packages; on NixOS they must be declared or
   # the binds silently do nothing.
   home.packages = with pkgs; [
-    ghostty          # $terminal (works on real hardware; VMware GPU limits only)
     dolphin          # SUPER+E file manager
     wofi             # SUPER+R launcher
     grim             # SUPER+SHIFT+S screenshot...

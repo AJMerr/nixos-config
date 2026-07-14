@@ -3,5 +3,6 @@
   imports = [
     ./hyprland
     ./noctalia
+    ./ghostty
   ];
 }
