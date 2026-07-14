@@ -16,9 +16,6 @@
     powerManagement.enable = true;
     nvidiaSettings = true;
 
-    # VERSION-SENSITIVE: 5070 needs driver >= 580. nixos-unstable's
-    # `stable` is currently 580.12x — verify before building:
-    #   nix eval nixpkgs#linuxPackages.nvidiaPackages.stable.version
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 }

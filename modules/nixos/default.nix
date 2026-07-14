@@ -9,7 +9,7 @@
     ./desktop.nix
   ];
 
-  nixpkgs.config.allowUnfree = true; # NVIDIA driver requires this
+  nixpkgs.config.allowUnfree = true; 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

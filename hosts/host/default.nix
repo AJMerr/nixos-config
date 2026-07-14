@@ -9,9 +9,9 @@
     ../../modules/nixos
   ];
 
-  networking.hostName = "legion-tower-5";
+  networking.hostName = "nixos";
 
-  users.users.austin = {
+  users.users.ajmerr = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "video" "input" ];
   };

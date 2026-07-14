@@ -8,8 +8,8 @@
     ../../modules/home
   ];
 
-  home.username = "austin";
-  home.homeDirectory = "/home/austin";
+  home.username = "ajmerr";
+  home.homeDirectory = "/home/ajmerr";
   home.stateVersion = "26.05"; # set once, never bump on upgrades
 
   programs.home-manager.enable = true;
