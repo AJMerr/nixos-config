@@ -61,7 +61,9 @@
   # these were ambient system packages; on NixOS they must be declared or
   # the binds silently do nothing.
   home.packages = with pkgs; [
-    dolphin          # SUPER+E file manager
+    kdePackages.dolphin          # SUPER+E file manager
+    kdePackages.kio
+    kdePackages.kio-extras
     wofi             # SUPER+R launcher
     grim             # SUPER+SHIFT+S screenshot...
     slurp            # ...region select...
