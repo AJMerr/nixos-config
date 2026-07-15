@@ -19,8 +19,9 @@
 
     settings = {
       # --- placeholder values; replace with your actual ghostty config ---
-      font-family = "DejaVu Sans Mono"; # matches your Noctalia fontFixed
-      font-size = 11;
+      font-family = "JetBrainsMono Nerd Font"; 
+      font-size = 12;
+      theme = "Catppuccin Mocha";
 
       # You run active_opacity 0.8 in Hyprland — if you ALSO set
       # background-opacity here they multiply and the terminal goes
@@ -34,9 +35,5 @@
       #   "ctrl+shift+enter=new_split:right"
       # ];
     };
-
-    # If you have a custom theme file, the module also exposes `themes`:
-    # themes.my-theme = { background = "1c1822"; foreground = "e9e4f0"; ... };
-    # then: settings.theme = "my-theme";
   };
 }
