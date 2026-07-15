@@ -4,5 +4,6 @@
     ./hyprland
     ./noctalia
     ./ghostty
+    ./cli
   ];
 }

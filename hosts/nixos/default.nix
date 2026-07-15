@@ -22,6 +22,7 @@
     vim
     neovim
     firefox
+    git      # system-wide VCS: available to root, all users, and early boot
   ];
 
   system.stateVersion = "26.05"; # set once at install, never bump on upgrades
