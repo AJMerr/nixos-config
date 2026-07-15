@@ -5,5 +5,6 @@
     ./noctalia
     ./ghostty
     ./cli
+    ./neovim
   ];
 }

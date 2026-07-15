@@ -7,6 +7,7 @@
     ./audio.nix
     ./nvidia.nix
     ./desktop.nix
+    ./fonts.nix
   ];
 
   nixpkgs.config.allowUnfree = true; 
