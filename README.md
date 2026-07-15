@@ -1,6 +1,6 @@
 # nixos-config
 
-NixOS + Home Manager monorepo for `legion-tower-5`.
+NixOS + Home Manager monorepo for `nixos`.
 Layout modeled on Misterio77/nix-starter-configs (standard) — hosts and
 users are thin entrypoints; everything real lives in `modules/`.
 
@@ -8,11 +8,11 @@ users are thin entrypoints; everything real lives in `modules/`.
 .
 ├── flake.nix                      # inputs (nixos-unstable, HM, noctalia) + host wiring
 ├── hosts/
-│   └── legion-tower-5/
+│   └── nixos/
 │       ├── default.nix             # hostname, user, stateVersion, module imports
 │       └── hardware-configuration.nix  # PLACEHOLDER — replace with generated
 ├── home/
-│   └── austin/
+│   └── ajmerr/
 │       └── default.nix             # user identity only; imports modules/home
 └── modules/
     ├── nixos/                      # system-level, one file per feature
@@ -26,11 +26,11 @@ users are thin entrypoints; everything real lives in `modules/`.
         ├── default.nix
         ├── hyprland/
         │   ├── default.nix         # HM module wiring: configType, extraLuaFiles, packages
-        │   ├── settings.nix        # data-shaped config (was your hl.config blocks)
         │   └── lua/                # real .lua files, readFile'd into extraLuaFiles
+        │       ├── config.lua      # data config: hl.monitor/hl.env/hl.config blocks
         │       ├── autostart.lua   # hyprland.start hook (terminal + noctalia)
         │       ├── binds.lua       # all your keybinds, verbatim (incl. workspace loop)
-        │       ├── animations.lua  # your curves + per-leaf animation calls, verbatim
+        │       ├── animations.lua  # enable flag + curves + per-leaf animation calls
         │       └── rules.lua       # your window rules + device config, verbatim
         └── noctalia/
             ├── default.nix         # programs.noctalia wiring + v4→v5 flags
@@ -48,8 +48,7 @@ entrypoint files.
 | What | Where | Why |
 |---|---|---|
 | `qs -c noctalia-shell` → `noctalia` | `hyprland/lua/autostart.lua` | v4 → v5 binary rename; repo pins v5 per your spec |
-| `/home/ajmerr/...` → `${config.home.homeDirectory}/...` | `noctalia/settings.nix` (avatar, wallpaper dir) | username is `austin` on this machine |
-| `0xee1a1a1a` → `3994688026` | `hyprland/settings.nix` shadow color | Nix has no hex literals; identical value |
+| `/home/ajmerr/...` → `${config.home.homeDirectory}/...` | `noctalia/settings.nix` (avatar, wallpaper dir) | portable — resolves from `home.homeDirectory` instead of a hardcoded path |
 | `colors.json` via `xdg.configFile` | `noctalia/default.nix` | no `programs.noctalia` option for it — the one raw-file escape hatch |
 
 Left alone but worth a look: `appLauncher.terminalCommand = "xterm -e"`
@@ -77,7 +76,7 @@ Left alone but worth a look: `appLauncher.terminalCommand = "xterm -e"`
 | Hyprland ≥ 0.55 | `configType = "lua"` | `nix eval nixpkgs#hyprland.version` |
 | Home Manager 26.05+ | when HM Lua support landed | HM input is unpinned-latest; fine unless you pin back |
 | NVIDIA driver ≥ 580 | Blackwell minimum | `nix eval nixpkgs#linuxPackages.nvidiaPackages.stable.version` |
-| home-manager#9468 | settings→lua generator bugs (list `env`, nested tables) | `hyprland --verify-config` after build; relocate broken options into `lua/` files |
+| Hyprland Lua config | HM's `settings`→lua generator emits `hl.<section>()` calls that don't exist in Hyprland 0.55 (only `hl.config()` does) — abandoned in favor of hand-written `lua/config.lua` | `hyprland --verify-config` after build; keep data config as `hl.config({...})`, not HM `settings` |
 
 ## Manual steps outside this repo
 
@@ -86,8 +85,8 @@ Above 4G Decoding ON · Resizable BAR ON · USB boot for installer.
 
 **Install:** partition (GPT; FAT32 ESP ~512M–1G at `/boot`; root ext4/btrfs;
 decide swap/zram) → mount → `nixos-generate-config --root /mnt` → replace
-`hosts/legion-tower-5/hardware-configuration.nix` with the generated file →
-`nixos-install --flake .#legion-tower-5` → password, reboot.
+`hosts/nixos/hardware-configuration.nix` with the generated file →
+`nixos-install --flake .#nixos` → password, reboot.
 
 ## First-boot verification
 
