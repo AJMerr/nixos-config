@@ -68,6 +68,11 @@
 
     # C / C++
     clang-tools        # clangd LSP + clang-format
+
+    # Nix  (LazyVim nix extra: nil_ls LSP, nixfmt formatter, statix linter)
+    nil                # LSP (nil_ls)
+    nixfmt-rfc-style   # `nixfmt` formatter (conform)
+    statix             # linter (nvim-lint)
   ];
 
   # Neovim as the default editor, and point rust-analyzer at the std library

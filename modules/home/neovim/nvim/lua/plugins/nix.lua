@@ -7,13 +7,13 @@
 -- back to setting each server up directly through nvim-lspconfig, starting
 -- whatever it finds on $PATH — which is exactly the Nix-provided binaries.
 --
--- Both the current (mason-org/*) and legacy (williamboman/*) plugin names are
--- listed so this keeps working across LazyVim's rename; disabling a name that
--- isn't in the spec is a harmless no-op.
+-- Mason was moved from the williamboman/* org to mason-org/* upstream, and
+-- current LazyVim references the mason-org/* names. Disable spec entries by
+-- their *current* names only: naming the old williamboman/* repos here makes
+-- LazyVim's rename-detector fire a "was renamed to mason-org/…" warning on
+-- every startup (that is the banner this file exists to prevent).
 return {
   { "mason-org/mason.nvim", enabled = false },
   { "mason-org/mason-lspconfig.nvim", enabled = false },
-  { "williamboman/mason.nvim", enabled = false },
-  { "williamboman/mason-lspconfig.nvim", enabled = false },
   { "jay-babu/mason-nvim-dap.nvim", enabled = false },
 }

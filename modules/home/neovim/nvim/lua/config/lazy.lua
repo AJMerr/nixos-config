@@ -35,6 +35,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.clangd" },      -- C / C++
+    { import = "lazyvim.plugins.extras.lang.nix" },         -- nil_ls + nixfmt + statix
 
     -- Local overrides: colorscheme, Mason-off, html/css. (lua/plugins/*.lua)
     { import = "plugins" },
