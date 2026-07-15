@@ -33,7 +33,13 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.enable = true;
+    # systemd.enable = false because the session runs under UWSM (set in
+    # modules/nixos/desktop.nix via programs.hyprland.withUWSM). UWSM already
+    # starts graphical-session.target and imports the environment into the
+    # systemd/dbus activation environment; leaving HM's own systemd integration
+    # on would double-manage the same target and fight UWSM. The two settings
+    # are a matched pair — flip both together if you ever move off UWSM.
+    systemd.enable = false;
     configType = "lua";
 
     # No `settings` — see the note above. Everything is in extraLuaFiles.
