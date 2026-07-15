@@ -1,7 +1,10 @@
--- Bezier curves + per-leaf animation tuning — verbatim from your config.
--- These are hl.curve()/hl.animation() CALLS, so they can't live in the
--- Nix `settings` attrset (which only generates data declarations).
+-- Animations: master enable flag, bezier curves, and per-leaf tuning.
+-- The curve()/animation() calls are functions (not config data); the
+-- enable flag is set here too so it's guaranteed to precede the leaves
+-- below (Hyprland's example enables animations before defining them).
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
+
+hl.config({ animations = { enabled = true } })
 
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
 hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36, 1 } } })
