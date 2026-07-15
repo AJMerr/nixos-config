@@ -8,6 +8,7 @@
     ./nvidia.nix
     ./desktop.nix
     ./fonts.nix
+    ./steam.nix
   ];
 
   nixpkgs.config.allowUnfree = true; 
