@@ -23,7 +23,7 @@
     (pkgs.sddm-astronaut.overrideAttrs (old: {
       postInstall = (old.postInstall or "") + ''
         substituteInPlace $out/share/sddm/themes/sddm-astronaut-theme/metadata.desktop \
-          --replace-fail "ConfigFile=Themes/astronaut.conf" "ConfigFile=Themes/post-apocalyptic_hacker.conf"
+          --replace-fail "ConfigFile=Themes/astronaut.conf" "ConfigFile=Themes/cyberpunk.conf"
       '';
     }))
   ];
