@@ -9,6 +9,7 @@
     ./desktop.nix
     ./fonts.nix
     ./steam.nix
+    ./storage.nix
   ];
 
   nixpkgs.config.allowUnfree = true; 

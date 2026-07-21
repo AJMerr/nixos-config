@@ -74,6 +74,7 @@
     kdePackages.dolphin          # SUPER+E file manager
     kdePackages.kio
     kdePackages.kio-extras
+    udiskie          # automounts USB drives/Pico on insert (see autostart.lua)
     wofi             # SUPER+R launcher
     grim             # SUPER+SHIFT+S screenshot...
     slurp            # ...region select...
