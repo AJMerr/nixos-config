@@ -6,5 +6,6 @@
     ./ghostty
     ./cli
     ./neovim
+    ./obsidian
   ];
 }
