@@ -7,5 +7,6 @@
     ./cli
     ./neovim
     ./obsidian
+    ./easyeffects
   ];
 }
