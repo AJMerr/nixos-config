@@ -6,6 +6,12 @@
     # not raw master.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # Second nixos-unstable pin, used only for claude-code (see
+    # modules/nixos/overlays.nix). Deliberately NOT `follows` nixpkgs — the
+    # whole point is that it can be moved forward on its own:
+    #   nix flake update nixpkgs-claude
+    nixpkgs-claude.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

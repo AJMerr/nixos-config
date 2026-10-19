@@ -10,6 +10,7 @@
     ./fonts.nix
     ./steam.nix
     ./storage.nix
+    ./overlays.nix
   ];
 
   nixpkgs.config.allowUnfree = true; 

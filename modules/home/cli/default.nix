@@ -4,7 +4,9 @@
 
 {
   home.packages = with pkgs; [
-    claude-code   # Anthropic's Claude Code CLI (unfree; allowUnfree set in modules/nixos)
+    claude-code   # Anthropic's Claude Code CLI — version comes from the
+                  # dedicated `nixpkgs-claude` input, see
+                  # modules/nixos/overlays.nix
     spotatui      # standalone terminal Spotify client
   ];
 }

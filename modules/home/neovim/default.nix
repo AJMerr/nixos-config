@@ -68,6 +68,13 @@
 
     # C / C++
     clang-tools        # clangd LSP + clang-format
+    clang              # compiler (wrapped, finds libc headers on NixOS)
+    gnumake
+    cmake              # `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON` feeds clangd
+    bear               # `bear -- make` generates compile_commands.json for clangd
+    gdb                # debugger
+    lldb               # debugger (lldb-dap)
+    valgrind           # memory error checking
 
     # Nix  (LazyVim nix extra: nil_ls LSP, nixfmt formatter, statix linter)
     nil                # LSP (nil_ls)
