@@ -1,3 +1,1 @@
--- Custom vim.opt options. LazyVim loads this automatically (after its own
--- defaults). Empty for now — add overrides here.
--- LazyVim defaults: https://www.lazyvim.org/configuration/general
+-- Custom options. Defaults: https://www.lazyvim.org/configuration/general

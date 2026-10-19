@@ -5,6 +5,7 @@
     ./noctalia
     ./ghostty
     ./cli
+    ./git
     ./neovim
     ./obsidian
     ./easyeffects

@@ -1,15 +1,10 @@
 {
-  description = "AJMerr's NixOS config)";
+  description = "AJMerr's NixOS config";
 
   inputs = {
-    # nixos-unstable: tested + cached rolling branch. Not a stable release,
-    # not raw master.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Second nixos-unstable pin, used only for claude-code (see
-    # modules/nixos/overlays.nix). Deliberately NOT `follows` nixpkgs — the
-    # whole point is that it can be moved forward on its own:
-    #   nix flake update nixpkgs-claude
+    # Separate pin for claude-code only; update with `nix flake update nixpkgs-claude`.
     nixpkgs-claude.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -17,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Noctalia's own flake (v5). NOTE: v5 is not in nixpkgs yet
+    # Noctalia v5 (not in nixpkgs)
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -1,6 +1,4 @@
-# User entrypoint — identity only. All actual configuration lives in
-# modules/home, so a second user/host later just writes its own thin
-# entrypoint and cherry-picks module imports.
+# User entrypoint: identity only. Configuration lives in modules/home.
 { config, lib, pkgs, inputs, ... }:
 
 {
@@ -10,7 +8,7 @@
 
   home.username = "ajmerr";
   home.homeDirectory = "/home/ajmerr";
-  home.stateVersion = "26.05"; # set once, never bump on upgrades
+  home.stateVersion = "26.05"; # never bump on upgrades
 
   programs.home-manager.enable = true;
 }

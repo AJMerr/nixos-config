@@ -1,11 +1,5 @@
--- lazy.nvim bootstrap + LazyVim setup.
---
--- Language support is turned on by importing LazyVim's "extras" below. Each
--- extra pulls in the right plugins, treesitter parsers, LSP server config,
--- formatters and DAP for that language. The binaries those need do NOT come
--- from Mason (disabled in lua/plugins/nix.lua on NixOS) — they come from Nix,
--- from the home.packages list in modules/home/neovim/default.nix. Keep the two
--- in sync: add an extra here => add its tools there.
+-- Language extras. Each needs its tools in home.packages
+-- (modules/home/neovim/default.nix); Mason is disabled.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -24,11 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    -- LazyVim core and its default plugin set.
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
-    -- Language extras (see header). HTML/CSS have no dedicated extra and are
-    -- wired by hand in lua/plugins/lsp.lua instead.
+    -- HTML/CSS are configured in lua/plugins/lsp.lua.
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.typescript" }, -- JS + TS (vtsls)
@@ -37,12 +29,12 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.clangd" },      -- C / C++
     { import = "lazyvim.plugins.extras.lang.nix" },         -- nil_ls + nixfmt + statix
 
-    -- Local overrides: colorscheme, Mason-off, html/css. (lua/plugins/*.lua)
+    -- Local overrides (lua/plugins/*.lua)
     { import = "plugins" },
   },
   defaults = { lazy = false, version = false },
   install = { colorscheme = { "catppuccin", "habamax" } },
-  checker = { enabled = true, notify = false }, -- background update check, quiet
+  checker = { enabled = true, notify = false },
   performance = {
     rtp = {
       disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" },

@@ -1,8 +1,5 @@
--- Animations: master enable flag, bezier curves, and per-leaf tuning.
--- The curve()/animation() calls are functions (not config data); the
--- enable flag is set here too so it's guaranteed to precede the leaves
--- below (Hyprland's example enables animations before defining them).
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
+-- Animation enable flag, curves, and per-leaf settings.
+-- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 
 hl.config({ animations = { enabled = true } })
 

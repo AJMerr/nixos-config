@@ -4,34 +4,27 @@
   security.rtkit.enable = true;
   services.pulseaudio.enable = false;
 
-  # Required for EasyEffects (modules/home/easyeffects) — its daemon reads
-  # its settings via GSettings/dconf, which does nothing without this.
+  # EasyEffects reads its settings through dconf.
   programs.dconf.enable = true;
 
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-    pulse.enable = true;       # pipewire-pulse — what `pactl info` talks to
+    pulse.enable = true;
     wireplumber.enable = true;
 
-    # High-fidelity/lossless: let the graph clock follow whatever rate the
-    # source material actually is (44.1kHz-family vs 48kHz-family) instead
-    # of always resampling everything down to 48kHz, and use the
-    # highest-quality resampler for the cases where a rate switch still
-    # isn't possible (e.g. two apps at different rates mixed together).
+    # Follow the source's sample rate (44.1k/48k families) instead of always
+    # resampling to 48k; use the highest-quality resampler otherwise.
     extraConfig.pipewire."99-audiophile" = {
       "context.properties" = {
         "default.clock.rate" = 48000;
         "default.clock.allowed-rates" = [ 44100 48000 88200 96000 176400 192000 ];
-        "resample.quality" = 15; # max quality; pipewire's default is 4
+        "resample.quality" = 15; # max; default is 4
       };
     };
 
-    # Don't let ALSA nodes suspend after their idle timeout — the
-    # power-down/power-up cycle on the next sample causes an audible
-    # click/pop, and matters most once the DAC (arriving Wed) becomes the
-    # active output device.
+    # Never suspend ALSA nodes; the power cycle causes audible clicks.
     wireplumber.extraConfig."51-no-suspend" = {
       "monitor.alsa.rules" = [
         {

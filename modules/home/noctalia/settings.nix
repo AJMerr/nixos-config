@@ -1,25 +1,8 @@
-# Noctalia settings — machine-converted 1:1 from your settings.json
-# (settingsVersion 59, exported from v4/Quickshell Noctalia).
+# Noctalia settings. Keys follow the v4 schema and may differ in v5; see
+# https://docs.noctalia.dev/v5/configuration/. A Nix-managed file cannot be
+# migrated in place by Noctalia.
 #
-# ⚠️ SCHEMA FLAG — read before first build:
-# This repo pins Noctalia v5 via its flake input (per your spec:
-# homeModules.default / programs.noctalia). v5 changed the on-disk settings
-# format (TOML) and reorganized parts of the schema vs. v4's JSON. The
-# module serializes this attrset for you, so the Nix side is fine either
-# way — but individual KEYS below may have been renamed/moved in v5.
-# Noctalia migrates versioned settings files on load; a Nix-managed
-# read-only file can't be migrated in place. After first launch, diff
-# Noctalia's complaints (if any) against the v5 config reference:
-#   https://docs.noctalia.dev/v5/configuration/
-# Escape hatch: programs.noctalia.settings also accepts a PATH to a real
-# settings file — point it at your old JSON to bisect module vs. schema
-# problems.
-#
-# Changes made from your original file (only these):
-#   - /home/ajmerr/... paths -> ''${config.home.homeDirectory}/... (new
-#     username on this machine is austin)
-#   - appLauncher.terminalCommand was "xterm -e" — left as-is, but you
-#     probably want "ghostty -e" now; xterm isn't installed by this config.
+# TODO: appLauncher.terminalCommand is "xterm -e" (not installed); likely "ghostty -e".
 { config, ... }:
 
 {

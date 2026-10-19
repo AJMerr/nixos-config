@@ -120,7 +120,5 @@ for lazy.nvim's `lazy-lock.json`. Editing config = edit under `nvim/`, rebuild
 
 ## In-file documentation
 
-Every module carries a header comment explaining *why* it exists and flagging
-version sensitivities and deliberate deviations from the source dotfiles. Read the
-relevant module's comments before changing it — they capture decisions not visible
-in the code itself.
+Comments in modules are brief and only clarify non-obvious use. Read a module's
+comments before changing it, especially version-sensitive notes.

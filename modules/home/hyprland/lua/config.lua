@@ -1,13 +1,6 @@
--- Data-shaped Hyprland config: monitors, env vars, and the hl.config()
--- variable blocks (general/decoration/dwindle/master/misc/input).
---
--- WHY THIS IS LUA AND NOT NIX `settings`: Hyprland 0.55's Lua API exposes
--- exactly ONE generic config setter, hl.config({...}) — there is no
--- hl.general/hl.decoration/hl.animations/etc. Home Manager's settings->lua
--- generator (this pinned HM rev) emits those per-section calls, which are
--- nil at runtime and abort the whole config. So everything data-shaped is
--- written here by hand against the real API. Canonical reference:
--- `share/hypr/hyprland.lua` in the hyprland package.
+-- Monitors, env vars, and hl.config() blocks.
+-- Hyprland's Lua API has only hl.config({...}) for settings (no hl.general etc.).
+-- Reference: share/hypr/hyprland.lua in the hyprland package.
 -- Animations (enable flag + curves + leaves) live in ./animations.lua.
 
 -- Monitors: https://wiki.hypr.land/Configuring/Basics/Monitors/
@@ -35,7 +28,7 @@ hl.config({
     },
 
     resize_on_border = false,
-    allow_tearing    = false, -- see hypr wiki on tearing before enabling
+    allow_tearing    = false,
     layout           = "dwindle",
   },
 
@@ -50,7 +43,7 @@ hl.config({
       enabled      = true,
       range        = 4,
       render_power = 3,
-      color        = 0xee1a1a1a, -- Lua has hex literals; no Nix decimal workaround needed
+      color        = 0xee1a1a1a,
     },
 
     blur = {

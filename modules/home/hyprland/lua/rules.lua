@@ -1,6 +1,4 @@
--- Window rules, per-device input, gestures — verbatim from your config.
--- hl.window_rule()/hl.device()/hl.gesture() are calls -> live here, not
--- in the Nix settings attrset.
+-- Window rules, input devices, gestures.
 
 hl.window_rule({
   -- Ignore maximize requests from all apps.
@@ -11,7 +9,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-  -- Fix some dragging issues with XWayland
+  -- Fix XWayland drag issues
   name     = "fix-xwayland-drags",
   match    = {
     class      = "^$",
@@ -34,23 +32,21 @@ hl.window_rule({
   float = true,
 })
 
--- Force Firefox to render at full opacity regardless of active/inactive opacity
+-- Firefox ignores active/inactive opacity
 hl.window_rule({
   name    = "firefox-full-opacity",
   match   = { class = "^(firefox)$" },
   opacity = "1.0 override",
 })
 
--- 3-finger workspace swipe gesture was commented out (disabled) in your old
--- config, so it's left disabled here too. Uncomment to enable:
+-- Disabled: 3-finger workspace swipe.
 -- hl.gesture({
 --   fingers = 3,
 --   direction = "horizontal",
 --   action = "workspace"
 -- })
 
--- Example per-device config (placeholder device name from the default
--- config, carried over from your old config — does not match any real device)
+-- Placeholder: matches no real device.
 hl.device({
   name        = "epic-mouse-v1",
   sensitivity = -0.5,

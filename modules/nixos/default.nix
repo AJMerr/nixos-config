@@ -1,5 +1,4 @@
-# Aggregator for system-level modules. Hosts import this directory;
-# individual features each get their own file.
+# Aggregator for system modules.
 {
   imports = [
     ./boot.nix

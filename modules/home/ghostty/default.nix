@@ -1,39 +1,19 @@
 { config, lib, pkgs, ... }:
 
 {
-  # -----------------------------------------------------------------------
-  # Ghostty — native programs.ghostty HM module
-  # -----------------------------------------------------------------------
-  # `settings` here serializes to ~/.config/ghostty/config as plain
-  # `key = value` lines — Ghostty's own config format. Repeated-key options
-  # (keybind, font-feature, etc.) are written as Nix lists and emit one
-  # line per element, same rule as the Hyprland module.
   programs.ghostty = {
     enable = true;
-
-    # Shell integration wires in cursor shapes, prompt jumping, sudo
-    # wrapping etc. Enable the one(s) matching your actual shell:
     enableBashIntegration = true;
-    # enableZshIntegration = true;
-    # enableFishIntegration = true;
 
     settings = {
-      # --- placeholder values; replace with your actual ghostty config ---
-      font-family = "JetBrainsMono Nerd Font"; 
+      font-family = "JetBrainsMono Nerd Font";
       font-size = 12;
       theme = "Catppuccin Mocha";
 
-      # You run active_opacity 0.8 in Hyprland — if you ALSO set
-      # background-opacity here they multiply and the terminal goes
-      # muddier than you expect. Pick one layer to own transparency.
+      # Hyprland already applies window opacity; setting it here too would multiply.
       # background-opacity = 0.9;
 
-      window-decoration = false; # tiling WM; Hyprland draws the borders
-
-      # keybind = [
-      #   "ctrl+shift+t=new_tab"
-      #   "ctrl+shift+enter=new_split:right"
-      # ];
+      window-decoration = false;
     };
   };
 }

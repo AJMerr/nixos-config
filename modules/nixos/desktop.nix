@@ -6,19 +6,16 @@
 }:
 
 {
-  # System half of the Hyprland split (user half: modules/home/hyprland). Both required.
+  # System half of Hyprland; the user config is in modules/home/hyprland.
   programs.hyprland.enable = true;
 
-  # UWSM wraps Hyprland in a proper systemd user session. Required for the
-  # greeter's "hyprland-uwsm" session entry to actually start.
+  # Runs Hyprland as a systemd user session; provides the "hyprland-uwsm" session.
   programs.hyprland.withUWSM = true;
 
   xdg.portal.enable = true;
 
-  # sddm-astronaut ships one theme dir ("sddm-astronaut-theme") with several
-  # selectable variants; the variant is baked into metadata.desktop's
-  # ConfigFile= line, so pick "post-apocalyptic_hacker" by patching that here
-  # (the upstream installer does the same sed, just against a writable copy).
+  # Select the sddm-astronaut "cyberpunk" variant by patching the theme's
+  # metadata.desktop.
   environment.systemPackages = [
     (pkgs.sddm-astronaut.overrideAttrs (old: {
       postInstall = (old.postInstall or "") + ''
@@ -36,6 +33,5 @@
     theme = "sddm-astronaut-theme";
   };
 
-  # hyprland-uwsm.desktop, the UWSM-managed session (see withUWSM above).
   services.displayManager.defaultSession = "hyprland-uwsm";
 }
